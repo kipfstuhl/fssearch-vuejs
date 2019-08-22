@@ -5,16 +5,24 @@
     --result-background-color: #F0F0F0;
     --shadow-color: #AAA;
 }
-html {
+body {
     background: var(--background-color);
+    font-family: "Merriweather Sans", sans-serif;
+    font-size: 14px;
 }
-input[type=search] {
+h1 {
+    text-align: center;
+    font-family: "Merriweather Sans Bold";
+}
+/* input[type=search] { */
+input {
     outline: none;
     padding: 5px 5px;
     border: 2px solid #aaa;
     border-radius: 0px;
     box-sizing: border-box;
     background-color: var(--result-background-color);
+    /* font-family: "Merriweather Sans"; */
     /* box-shadow: 0px 0px 2px 0px var(--shadow-color); */
 }
 a {
@@ -45,8 +53,13 @@ em {
     margin: 0 var(--side-margin) 15px var(--side-margin);
 }
 .description-title {
-    font-weight: bold;
     font-size: 120%;
+    /* font-family: "Open Sans SemiBold", sans-serif; */
+    font-family: "Merriweather Sans Bold";
+}
+.description-description {
+    /* font-family: "Old Standard TT", serif; */
+    font-family: "Merriweather", serif;
 }
 .count-info {
     /* color: var(--grey-font); */
@@ -57,6 +70,6 @@ em {
 }
 .path {
     color: var(--grey-font);
-    font-family: sans-serif;
+    /* font-family: 'Merriweather Sans', sans-serif; */
     font-size: 80%;
 }
