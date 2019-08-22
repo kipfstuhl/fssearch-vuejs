@@ -4,16 +4,27 @@ var myapp = new Vue({
         searchText: '',
         results: [],
         totalFound: null,
+        hitsPerPage: 10,
+        currentPage: null
+    },
+    computed: {
+        totalPages: function() {
+            return Math.ceil(this.totalFound/this.hitsPerPage)
+        }
     },
     methods: {
-        doSearch() {
+        doSearch: function(e, startFrom = 0) {
+            console.log(startFrom);
             const searchHost = 'http://localhost:9200/test/_search';
             var body;
             if (this.searchText.length !== 0) {
-                body = buildQuery(this.searchText);
+                this.currentPage = Math.ceil(startFrom/this.hitsPerPage);
+                body = buildQuery(this.searchText, startFrom, this.hitsPerPage);
+                // body = buildQuery(this.searchText, startFrom, 10);
             } else {
                 this.results = [];
                 this.totalFound = null;
+                this.currentPage = null;
                 return;
             }
 
@@ -48,6 +59,10 @@ var myapp = new Vue({
                 searchIn.focus();
                 searchIn.select();
             }
+        },
+        updateHitsPerPage: function(e) {
+            this.hitsPerPage =  parseInt(document.getElementById('items').value);
+            this.doSearch(e, this.currentPage*this.hitsPerPage);
         }
     },
     created: function() {
@@ -57,8 +72,9 @@ var myapp = new Vue({
         document.removeEventListener('keyup', this.searchKeyListener);
     }
 });
-function buildQuery(searchTerm, returnSize = 10) {
-    var body = {'size': returnSize,
+function buildQuery(searchTerm, start, numberItems) {
+    var body = {'size': numberItems,
+                'from': start,
                 'highlight': {
                     'order': 'score',
                     'number_of_fragments': 1,
