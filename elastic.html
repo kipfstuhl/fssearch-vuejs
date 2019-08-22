@@ -21,10 +21,20 @@
 
         </ul>
       </div>
+      <p class="page-button-group">
+        <button v-for="i in totalPages" @click="doSearch($event, (i-1)*hitsPerPage)"
+                :disabled="(i-1)===currentPage" >{{i}}</button>
+      </p>
+      <p> Hits per Page:
+        <input id="items" type="number" name="items" step="1" min="1"
+               v-bind:value="hitsPerPage"
+               size="4" @keyup.enter="updateHitsPerPage">
+      </p>
       <p v-if="totalFound !== null" class="count-info">
-        <!-- the style is arbotrary, it happens to fit the tooltip for the links to
-        follow --> Showing {{results.length}} of {{totalFound}} documents
-        matching your query.</p>
+        Showing {{results.length}} of {{totalFound}} documents matching your
+        query.<br>
+        Start at {{currentPage}}.
+      </p>
     </div>
     
     <script src="elastic.js"></script>

@@ -60,3 +60,20 @@ em {
     font-family: sans-serif;
     font-size: 80%;
 }
+.page-button-group {
+    margin: 0 var(--side-margin);
+    float: right;
+    font-size: 110%;
+}
+.page-button-group button {
+    /* box-sizing: border-box; */
+    font-size: larger;
+    border: 1px solid #AAA;
+    border-radius: 0;
+}
+.page-button-group button:not(:first-child) {
+    border-left: none;
+}
+.page-button-group:after {
+    /* clear: both; */
+}
