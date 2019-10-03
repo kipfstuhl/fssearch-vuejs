@@ -5,6 +5,9 @@
     --result-background-color: #F0F0F0;
     --shadow-color: #AAA;
 }
+#app {
+    margin: 0 var(--side-margin);
+}
 body {
     background: var(--background-color);
     font-family: "Merriweather Sans", sans-serif;
@@ -14,15 +17,12 @@ h1 {
     text-align: center;
     font-family: "Merriweather Sans Bold";
 }
-/* input[type=search] { */
 input {
-    outline: none;
     padding: 5px 5px;
     border: 2px solid #aaa;
     border-radius: 0px;
     box-sizing: border-box;
     background-color: var(--result-background-color);
-    /* font-family: "Merriweather Sans"; */
     /* box-shadow: 0px 0px 2px 0px var(--shadow-color); */
 }
 a {
@@ -31,7 +31,7 @@ a {
 }
 ul {
     list-style-type: none;
-    padding: 0 var(--side-margin);
+    padding: 0;
     margin: 0;
 }
 ul li {
@@ -54,41 +54,37 @@ em {
     gap: 3px;
 }
 #search {
-    width: calc(100% - 2*var(--side-margin));
-    /* margin-bottom: 15px; */
-    margin: 0 var(--side-margin) 15px var(--side-margin);
+    flex: auto;
+    min-width: 5em;
+}
 .flex-ini-box {
     flex: initial;
 }
+#items {
+    width: 4em;
 }
 .description-title {
     font-size: 120%;
-    /* font-family: "Open Sans SemiBold", sans-serif; */
     font-family: "Merriweather Sans Bold";
 }
 .description-description {
-    /* font-family: "Old Standard TT", serif; */
     font-family: "Merriweather", serif;
 }
 .count-info {
-    /* color: var(--grey-font); */
     font-size: 85%;
-    margin: 10px var(--side-margin) 22px;
+    margin-top: 10px;
+    margin-bottom: 22px;
     color: var(--grey-font);
-    /* padding: .5em; */
 }
 .path {
     color: var(--grey-font);
-    /* font-family: 'Merriweather Sans', sans-serif; */
     font-size: 80%;
 }
 .page-button-group {
-    margin: 0 var(--side-margin);
     float: right;
     font-size: 110%;
 }
 .page-button-group button {
-    /* box-sizing: border-box; */
     font-size: larger;
     border: 1px solid #AAA;
     border-radius: 0;
