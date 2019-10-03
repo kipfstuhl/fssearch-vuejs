@@ -7,10 +7,16 @@
     <h1>Suche mit FSSearch</h1>
     <div id="app">
       <!-- <label for="search">Search</label> -->
-      <input type="search" id="search" v-model="searchText"
+      <div class="flex-row"> <input type="search" id="search" v-model="searchText"
              @keyup.enter="doSearch" @keyup.83.stop autofocus tabindex="1"
-             placeholder="Type 's' to search" autofocus />
-      <!-- <span class="small">You search for: {{ searchText }}</span> -->
+             placeholder="Type 's' to search" autofocus>
+        <div class="flex-ini-box">
+          <input id="items" type="number" name="items" step="1" min="1"
+                 v-bind:value="hitsPerPage"
+                 size="4" @keyup.enter="updateHitsPerPage"> hits per Page
+          </div>
+      </div>
+
       <div id="hits">
         <ul>
           <li v-for="res in results">
@@ -26,12 +32,6 @@
         <button v-for="i in totalPages" @click="doSearch($event, (i-1)*hitsPerPage)"
                 :disabled="(i-1)===currentPage" >{{i}}</button>
       </p>
-      <p> Hits per Page:
-        <input id="items" type="number" name="items" step="1" min="1"
-               v-bind:value="hitsPerPage"
-               size="4" @keyup.enter="updateHitsPerPage">
-      </p>
-      <p v-if="totalFound !== null" class="count-info">
         Showing {{results.length}} of {{totalFound}} documents matching your
         query.<br>
         Start at {{currentPage}}.

@@ -47,10 +47,19 @@ em {
     font-style: normal;
     font-weight: bolder;
 }
+.flex-row {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 3px;
+}
 #search {
     width: calc(100% - 2*var(--side-margin));
     /* margin-bottom: 15px; */
     margin: 0 var(--side-margin) 15px var(--side-margin);
+.flex-ini-box {
+    flex: initial;
+}
 }
 .description-title {
     font-size: 120%;
