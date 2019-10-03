@@ -1,6 +1,8 @@
 # FSSearch-vue #
 
-A Vue.js webapp for desktop search. The files have to be indexed with FSCrawler.
+A Vue.js webapp for desktop search, for using it just open the file
+`elastic.html` with a browser. The files to be serached have to be indexed with
+FSCrawler in advance.
 
 This repository contains everything needed for running the search interface. For
 the backend you have to install ElasticSearch and FSCrawler and afterwards index
